@@ -4,8 +4,6 @@ import { cn } from '~/lib/utils';
 
 const authstore = useAuthStore();
 
-const route = useRoute();
-
 onMounted(async () => {
   authstore.setSkeleton();
 });
@@ -17,7 +15,7 @@ onUnmounted(() => {
 <template>
   <div class="relative flex h-screen w-screen flex-1">
     <div class="relative flex h-full w-full flex-col">
-      <!-- <LayoutTopPart :title="getCurrentMenuItemTitle" /> -->
+      <LayoutHeader />
       <div
         :class="
           cn('h-full w-full dark:bg-[#1a1a1a]')
