@@ -39,7 +39,7 @@ onActivated(async () => {
 </script>
 
 <template>
-  <div :aria-expanded="true" class="transition-width relative h-dvh min-h-[100%] w-full flex-col overflow-hidden">
+  <div :aria-expanded="true" class="transition-width relative h-full w-full flex-col overflow-hidden">
     <AiContent :messages="messages" :is-pending="isPending" />
     <AiMessage v-model="model" @on-submit="handleSubmit" />
   </div>
