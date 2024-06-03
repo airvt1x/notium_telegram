@@ -53,7 +53,7 @@ onActivated(async () => {
     <UiButton
       @click="authStore.logout"
       variant="ghost"
-      class="fixed top-2 left-2 z-9999"
+      class="absolute top-2 left-2 z-50"
     >
       <LogOut
         :size="20"

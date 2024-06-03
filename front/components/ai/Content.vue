@@ -40,7 +40,7 @@ watch(
 
 <template>
   <div class="h-full">
-    <div ref="container" class="content relative flex h-[92.5%] flex-1 flex-col overflow-y-auto px-8 mt-20">
+    <div ref="container" class="content relative flex h-[92%] flex-1 flex-col overflow-y-auto px-8 pt-12">
       <div class="flex h-full flex-col gap-8">
         <div
           v-for="(message, index) in markedMessagesToHtml"
