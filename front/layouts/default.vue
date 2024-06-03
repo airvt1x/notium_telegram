@@ -14,6 +14,7 @@ onUnmounted(() => {
 
 <template>
   <div class="relative flex h-dvh w-screen flex-1">
+    <LayoutHeader />
     <div class="relative flex h-dvh w-full flex-col">
       <div
         :class="
