@@ -7,7 +7,7 @@ const { width } = useWindowSize()
 </script>
 
 <template>
-  <NuxtLayout v-if="width < 1800">
+  <NuxtLayout v-if="width < 1120">
     <NuxtPage :keepalive="{ include: cacheList, max: 20 }" />
     <Toaster />
   </NuxtLayout>

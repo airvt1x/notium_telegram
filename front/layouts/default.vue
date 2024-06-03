@@ -4,8 +4,6 @@ import { cn } from '~/lib/utils';
 
 const authstore = useAuthStore();
 
-const route = useRoute();
-
 onMounted(async () => {
   authstore.setSkeleton();
 });
@@ -15,12 +13,12 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="relative flex h-screen w-screen flex-1">
-    <div class="relative flex h-full w-full flex-col">
-      <!-- <LayoutTopPart :title="getCurrentMenuItemTitle" /> -->
+  <div class="relative flex h-dvh w-screen flex-1">
+    <LayoutHeader />
+    <div class="relative flex h-dvh w-full flex-col">
       <div
         :class="
-          cn('h-full w-full dark:bg-[#1a1a1a]')
+          cn('h-dvh w-full dark:bg-[#1a1a1a]')
         "
       >
         <slot />
