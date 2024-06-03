@@ -29,14 +29,13 @@ const { value: password } = useField<string>("password");
 
 const authStore = useAuthStore();
 const { isLoading } = storeToRefs(authStore);
-const { login, registration } = authStore;
 
 const route = useRoute();
 // const localPath = useLocalePath();
 
 const onSubmit = handleSubmit(async (values) => {
   try {
-    await login({ ...values });
+    await authStore.login({ ...values });
   } catch (err) {
     console.log(err);
   }

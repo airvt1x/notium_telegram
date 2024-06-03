@@ -7,7 +7,7 @@ export const useAuthStore = defineStore('auth', () => {
   const isSkeleton = ref<boolean>(true);
   const error = ref('');
 
-  const { onLogin, getUser } = useUserAuth();
+  const { onLogin, getUser, onGithubLogin, oAuthLogin } = useUserAuth();
 
   const login = async (userInfo: { email: string; password: string }) => {
     isLoading.value = true;
@@ -29,16 +29,24 @@ export const useAuthStore = defineStore('auth', () => {
     }
   };
 
-
-  const logout = async () => {
+  const oAuth2Github = async () => {
+    isLoading.value = true;
     try {
-      user.value = null;
-      token.value = '';
-      const uid = useCookie('uid');
-      uid.value = null;
-      await navigateTo(LOGIN_ROUTE);
-    } catch (e) {
-      console.log(e);
+      const response = await onGithubLogin();
+      const creds = await oAuthLogin({
+        id: response?.user.uid!,
+        email: response?.user.email!,
+        photoUrl: response?.user.photoURL!
+      })
+      user.value = creds.data;
+      token.value = creds.data.token;
+      if (token.value) {
+        navigateTo(AI_ROUTE);
+      }
+    } catch (err: any) {
+      throw new Error(err);
+    } finally {
+      isLoading.value = false;
     }
   };
 
@@ -52,6 +60,18 @@ export const useAuthStore = defineStore('auth', () => {
       };
     } catch (err) {
       console.log(err);
+    }
+  };
+
+  const logout = async () => {
+    try {
+      user.value = null;
+      token.value = '';
+      const uid = useCookie('uid');
+      uid.value = null;
+      await navigateTo(LOGIN_ROUTE);
+    } catch (e) {
+      console.log(e);
     }
   };
 
@@ -75,6 +95,7 @@ export const useAuthStore = defineStore('auth', () => {
     logout,
     setSkeleton,
     setSkeletonOnUnmount,
-    getCurrentUser
+    getCurrentUser,
+    oAuth2Github
   };
 });
