@@ -3,7 +3,6 @@ import { useAuthStore } from '~/store/auth.store';
 import { cn } from '~/lib/utils';
 
 const authstore = useAuthStore();
-const mode = useColorMode();
 
 onMounted(async () => {
   authstore.setSkeleton();
