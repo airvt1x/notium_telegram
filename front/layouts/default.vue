@@ -3,6 +3,7 @@ import { useAuthStore } from '~/store/auth.store';
 import { cn } from '~/lib/utils';
 
 const authstore = useAuthStore();
+const mode = useColorMode();
 
 onMounted(async () => {
   authstore.setSkeleton();
@@ -14,7 +15,6 @@ onUnmounted(() => {
 
 <template>
   <div class="relative flex h-dvh w-screen flex-1">
-    <LayoutHeader />
     <div class="relative flex h-dvh w-full flex-col">
       <div
         :class="

@@ -1,9 +1,7 @@
 <script setup lang="ts">
 import { Moon, Sun } from "lucide-vue-next";
-import { useAuthStore } from "~/store/auth.store";
 
 const mode = useColorMode();
-const authStore = useAuthStore();
 const onToggleTheme = () => {
   mode.value === "dark" ? (mode.value = "light") : (mode.value = "dark");
 };
@@ -29,9 +27,6 @@ const onToggleTheme = () => {
           :is="mode === 'light' ? Moon : Sun"
           :color="mode === 'light' ? 'rgb(39 39 42)' : 'rgb(244 244 245)'"
         />
-        <UiButton @click="authStore.logout">
-        Logout
-      </UiButton>
       </div>
     </div>
   </header>
