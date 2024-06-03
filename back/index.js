@@ -32,6 +32,7 @@ app.get('/', (req,res) => {
     res.send('Гугуца батрачит')
 });
 app.post('/auth/login', handleValidationErrors, UserController.login);
+app.post('/gitlogin', UserController.gitlogin)
 
 //notes
 app.get('/notes', checkAuth, NoteController.getNotes);
